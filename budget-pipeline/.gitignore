@@ -1,0 +1,8 @@
+input/*.csv
+input/*.CSV
+secrets/config.json
+secrets/seen_hashes.json
+secrets/import_state.json
+__pycache__/
+*.pyc
+.env

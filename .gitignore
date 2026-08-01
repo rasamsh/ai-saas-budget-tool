@@ -1,0 +1,35 @@
+# ── Secrets & personal data ───────────────────────────────────────────────
+# Bank CSV exports (personal financial data)
+budget-pipeline/input/*.csv
+budget-pipeline/input/*.CSV
+# Pipeline secrets & local state — ignore everything except the template
+budget-pipeline/secrets/*
+!budget-pipeline/secrets/config.example.json
+budget-pipeline/.env
+# Web env (Supabase URL + keys)
+web/.env.local
+web/.env*.local
+# Claude Code machine-local settings (absolute paths / any pasted keys)
+.claude/settings.local.json
+
+# ── Python pipeline build artifacts ───────────────────────────────────────
+budget-pipeline/__pycache__/
+budget-pipeline/**/__pycache__/
+budget-pipeline/**/*.pyc
+budget-pipeline/.venv/
+budget-pipeline/**/.pytest_cache/
+
+# ── Node / Next.js ─────────────────────────────────────────────────────────
+node_modules/
+web/.next/
+web/out/
+web/coverage/
+web/next-env.d.ts
+web/*.tsbuildinfo
+web/**/.pytest_cache/
+*.tsbuildinfo
+
+# ── OS ─────────────────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+.claude/

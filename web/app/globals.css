@@ -1,0 +1,44 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Hi-Bit design system: warm cream canvas, ink outlines, hard offset shadows,
+   periwinkle accent. --border is the ink card outline; --border-soft is for
+   inner hairlines (table dividers, input borders at rest). */
+:root {
+  --background: #f6f1e7;
+  --card: #fffdf8;
+  --muted: #ece5d8;
+  --foreground: #1e1b2e;
+  --muted-foreground: #6f6a80;
+  --border: #1e1b2e;
+  --border-soft: #ddd4c3;
+  --card-shadow: 0 3px 0 0 rgb(30 27 46 / 0.14);
+  --accent: #6c5ce7;
+  --accent-foreground: #ffffff;
+  --accent-soft: #e9e5fb;
+  --radius-card: 1.25rem;
+}
+
+.dark {
+  --background: #17141f;
+  --card: #211d2c;
+  --muted: #2b2638;
+  --foreground: #f4f0e6;
+  --muted-foreground: #9c96ac;
+  --border: #f4f0e6;
+  --border-soft: #3a3350;
+  --card-shadow: 0 3px 0 0 rgb(0 0 0 / 0.45);
+  --accent: #8f82ff;
+  --accent-foreground: #17141f;
+  --accent-soft: #2f2a4a;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+* { box-sizing: border-box; }

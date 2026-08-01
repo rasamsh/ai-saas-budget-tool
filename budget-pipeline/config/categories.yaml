@@ -1,0 +1,395 @@
+# Category colors match those seeded in the DB migration
+categories:
+  - name: Groceries
+    txn_type: expense
+    color: "#22c55e"
+  - name: Dining
+    txn_type: expense
+    color: "#f97316"
+  - name: Shopping
+    txn_type: expense
+    color: "#8b5cf6"
+  - name: Subscriptions
+    txn_type: expense
+    color: "#3b82f6"
+  - name: Transportation
+    txn_type: expense
+    color: "#6366f1"
+  - name: Utilities
+    txn_type: expense
+    color: "#0ea5e9"
+  - name: Healthcare
+    txn_type: expense
+    color: "#ec4899"
+  - name: Travel
+    txn_type: expense
+    color: "#14b8a6"
+  - name: Car Insurance
+    txn_type: expense
+    color: "#64748b"
+  - name: Gym
+    txn_type: expense
+    color: "#10b981"
+  - name: Misc
+    txn_type: expense
+    color: "#6b7280"
+  - name: Car Loan
+    txn_type: debt
+    color: "#f59e0b"
+  - name: Taxable Brokerage
+    txn_type: investment
+    color: "#2563eb"
+  - name: 529 Plan
+    txn_type: investment
+    color: "#7c3aed"
+  - name: Income
+    txn_type: income
+    color: "#16a34a"
+
+# Pattern rules — case-insensitive substring match on raw description
+# First match wins. Add your own rules here.
+rules:
+  # Incoming money — the direction is in the wording itself ("... FROM ...",
+  # "DEPOSIT", "PAYROLL"), so these are safe to match on any transaction, not
+  # just rows the bank flagged as credits. That is what lets --recategorize
+  # repair a credit that was stored with the wrong sign. Listed first so a
+  # spending rule can never claim an incoming transfer.
+  - pattern: "TRANSFER FROM"
+    category: Income
+    type: income
+  - pattern: "ZELLE PAYMENT FROM"
+    category: Income
+    type: income
+  - pattern: "QUICKPAY FROM"
+    category: Income
+    type: income
+  - pattern: "DEPOSIT FROM"
+    category: Income
+    type: income
+  - pattern: "MOBILE DEPOSIT"
+    category: Income
+    type: income
+  - pattern: "REMOTE ONLINE DEPOSIT"
+    category: Income
+    type: income
+  - pattern: "ATM DEPOSIT"
+    category: Income
+    type: income
+  - pattern: "PAYROLL"
+    category: Income
+    type: income
+  - pattern: "DIRECT DEP"
+    category: Income
+    type: income
+  - pattern: "ACH CREDIT"
+    category: Income
+    type: income
+
+  # Groceries
+  - pattern: "WHOLE FOODS"
+    category: Groceries
+  - pattern: "TRADER JOE"
+    category: Groceries
+  - pattern: "KROGER"
+    category: Groceries
+  - pattern: "SAFEWAY"
+    category: Groceries
+  - pattern: "COSTCO"
+    category: Groceries
+  - pattern: "TARGET"
+    category: Groceries
+  - pattern: "WALMART"
+    category: Groceries
+  - pattern: "SPROUTS"
+    category: Groceries
+  - pattern: "ALDI"
+    category: Groceries
+
+  # Dining
+  - pattern: "DOORDASH"
+    category: Dining
+  - pattern: "UBER EATS"
+    category: Dining
+  - pattern: "GRUBHUB"
+    category: Dining
+  - pattern: "MCDONALD"
+    category: Dining
+  - pattern: "STARBUCKS"
+    category: Dining
+  - pattern: "CHIPOTLE"
+    category: Dining
+  - pattern: "SUBWAY"
+    category: Dining
+  - pattern: "CHICK-FIL-A"
+    category: Dining
+  - pattern: "PANERA"
+    category: Dining
+  - pattern: "DOMINO"
+    category: Dining
+  - pattern: "PIZZA"
+    category: Dining
+  - pattern: "TACO BELL"
+    category: Dining
+  - pattern: "WENDY"
+    category: Dining
+  - pattern: "BURGER KING"
+    category: Dining
+  - pattern: "RAISINGCANE"
+    category: Dining
+  - pattern: "RAISING CANE"
+    category: Dining
+  - pattern: "PITA VALLEY"
+    category: Dining
+
+  # Shopping
+  - pattern: "AMAZON"
+    category: Shopping
+  - pattern: "BEST BUY"
+    category: Shopping
+  - pattern: "APPLE.COM"
+    category: Shopping
+  - pattern: "IKEA"
+    category: Shopping
+  - pattern: "WAYFAIR"
+    category: Shopping
+  - pattern: "ETSY"
+    category: Shopping
+  - pattern: "EBAY"
+    category: Shopping
+  - pattern: "CHEWY"
+    category: Shopping
+
+  # Subscriptions
+  - pattern: "NETFLIX"
+    category: Subscriptions
+  - pattern: "SPOTIFY"
+    category: Subscriptions
+  - pattern: "HULU"
+    category: Subscriptions
+  - pattern: "DISNEY+"
+    category: Subscriptions
+  - pattern: "DISNEY PLUS"
+    category: Subscriptions
+  - pattern: "HBO"
+    category: Subscriptions
+  - pattern: "APPLE ONE"
+    category: Subscriptions
+  - pattern: "APPLE MUSIC"
+    category: Subscriptions
+  - pattern: "ICLOUD"
+    category: Subscriptions
+  - pattern: "YOUTUBE PREMIUM"
+    category: Subscriptions
+  - pattern: "YOUTUBEPREMI"
+    category: Subscriptions
+  - pattern: "GOOGLE ONE"
+    category: Subscriptions
+  - pattern: "RING"
+    category: Subscriptions
+  - pattern: "AMAZON PRIME"
+    category: Subscriptions
+  - pattern: "LINKEDIN"
+    category: Subscriptions
+  - pattern: "CHATGPT"
+    category: Subscriptions
+  - pattern: "OPENAI"
+    category: Subscriptions
+  - pattern: "GITHUB"
+    category: Subscriptions
+  - pattern: "DROPBOX"
+    category: Subscriptions
+  - pattern: "NOTION"
+    category: Subscriptions
+
+  # Transportation
+  - pattern: "UBER"
+    category: Transportation
+  - pattern: "LYFT"
+    category: Transportation
+  - pattern: "METRO"
+    category: Transportation
+  - pattern: "TRANSIT"
+    category: Transportation
+  - pattern: "PARKING"
+    category: Transportation
+  - pattern: "GAS STATION"
+    category: Transportation
+  - pattern: "SHELL"
+    category: Transportation
+  - pattern: "CHEVRON"
+    category: Transportation
+  - pattern: "EXXON"
+    category: Transportation
+  - pattern: "MOBIL"
+    category: Transportation
+  - pattern: "BP"
+    category: Transportation
+  - pattern: "TOLL"
+    category: Transportation
+
+  # Utilities
+  - pattern: "ELECTRIC"
+    category: Utilities
+  - pattern: "PG&E"
+    category: Utilities
+  - pattern: "WATER"
+    category: Utilities
+  - pattern: "GILBERT AZ"
+    category: Utilities
+  - pattern: "INTERNET"
+    category: Utilities
+  - pattern: "AT&T"
+    category: Utilities
+  - pattern: "VERIZON"
+    category: Utilities
+  - pattern: "T-MOBILE"
+    category: Utilities
+  - pattern: "COMCAST"
+    category: Utilities
+  - pattern: "XFINITY"
+    category: Utilities
+  - pattern: "SPECTRUM"
+    category: Utilities
+  - pattern: "SOUTHWEST GAS"
+    category: Utilities
+  - pattern: "SRP"
+    category: Utilities
+  - pattern: "APS"
+    category: Utilities
+
+  # Healthcare
+  - pattern: "CVS"
+    category: Healthcare
+  - pattern: "WALGREENS"
+    category: Healthcare
+  - pattern: "PHARMACY"
+    category: Healthcare
+  - pattern: "MEDICAL"
+    category: Healthcare
+  - pattern: "DOCTOR"
+    category: Healthcare
+  - pattern: "DENTAL"
+    category: Healthcare
+  - pattern: "HOSPITAL"
+    category: Healthcare
+  - pattern: "URGENT CARE"
+    category: Healthcare
+
+  # Travel
+  - pattern: "HOTEL"
+    category: Travel
+  - pattern: "MARRIOTT"
+    category: Travel
+  - pattern: "HILTON"
+    category: Travel
+  - pattern: "AIRBNB"
+    category: Travel
+  - pattern: "DELTA"
+    category: Travel
+  - pattern: "UNITED AIRLINES"
+    category: Travel
+  - pattern: "AMERICAN AIRLINES"
+    category: Travel
+  - pattern: "SOUTHWEST AIRLINES"
+    category: Travel
+  - pattern: "SOUTHWEST AIR"
+    category: Travel
+  - pattern: "JETBLUE"
+    category: Travel
+  - pattern: "TSA PRECHECK"
+    category: Travel
+
+  # Gym
+  - pattern: "EOS"
+    category: Gym
+  - pattern: "PLANET FITNESS"
+    category: Gym
+  - pattern: "ANYTIME FITNESS"
+    category: Gym
+  - pattern: "ORANGE THEORY"
+    category: Gym
+  - pattern: "EQUINOX"
+    category: Gym
+
+  # Car Insurance
+  - pattern: "GEICO"
+    category: Car Insurance
+  - pattern: "STATE FARM"
+    category: Car Insurance
+  - pattern: "PROGRESSIVE"
+    category: Car Insurance
+  - pattern: "ALLSTATE"
+    category: Car Insurance
+
+  # Investment — Taxable Brokerage
+  - pattern: "M1 PAYMENTS"
+    category: Taxable Brokerage
+    type: investment
+  - pattern: "M1 FINANCE"
+    category: Taxable Brokerage
+    type: investment
+  - pattern: "FIDELITY"
+    category: Taxable Brokerage
+    type: investment
+  - pattern: "VANGUARD"
+    category: Taxable Brokerage
+    type: investment
+  - pattern: "SCHWAB"
+    category: Taxable Brokerage
+    type: investment
+  - pattern: "ROBINHOOD"
+    category: Taxable Brokerage
+    type: investment
+  - pattern: "WEALTHFRONT"
+    category: Taxable Brokerage
+    type: investment
+  - pattern: "BETTERMENT"
+    category: Taxable Brokerage
+    type: investment
+  - pattern: "COINBASE"
+    category: Taxable Brokerage
+    type: investment
+
+  # Investment — 529 Plan
+  - pattern: "MY529"
+    category: 529 Plan
+    type: investment
+  - pattern: "MY 529"
+    category: 529 Plan
+    type: investment
+  - pattern: "UGMA"
+    category: 529 Plan
+    type: investment
+
+# Amount-based rules — exact dollar match, checked BEFORE pattern rules
+# Great for fixed recurring payments like car loans
+amount_rules:
+  - amount: 688.76
+    category: Car Loan
+    type: debt
+
+# Known income sources — matched against the raw description of checking credits.
+# These no longer decide direction (the bank's sign does, and a credit is always
+# income); a credit matching none of them is flagged for review at import time.
+income_patterns:
+  - "PAYROLL"
+  - "DIRECT DEP"
+  - "DIRECT DEPOSIT"
+  - "ACH CREDIT"
+  - "ZELLE FROM"
+  - "ZELLE CREDIT"
+  - "SALARY"
+  - "EMPLOYER"
+  - "GUSTO"
+  - "ADP"
+  - "PAYCHEX"
+  - "INTUIT PAYROLL"
+  - "INTEREST PAYMENT"
+  - "TAX REFUND"
+  - "IRS TREAS"
+  - "STIMULUS"
+  - "GOOGLE INC"
+  - "AMAZON INC"
+  - "FACEBOOK"
+  - "REIMBURSEMENT"
+  - "REFUND"

@@ -1,0 +1,33 @@
+# Map CSV file globs to bank parsers and account labels.
+# Drop your CSV exports into the input/ folder, then run: python budget.py --all
+
+files:
+  - file: "amex_blue_*.csv"
+    bank: amex
+    account: Amex Blue
+
+  - file: "amex_plat_*.csv"
+    bank: amex
+    account: Amex Platinum
+
+  - file: "chase_checking_*.csv"
+    bank: chase
+    account: Chase Checking
+    exclude_patterns:
+      - "CHECK "             # Personal checks — skipped entirely
+      - "APPLECARD GSBANK"   # Apple Card payment — not tracked separately
+      - "AMERICAN EXPRESS"   # Amex autopay — tracked via Amex CSV
+      - "PAYMENT TO CHASE"   # Chase card payment — avoid double-count
+      - "CITI AUTOPAY"       # Citi autopay — tracked via Citi CSV
+      - "DISCOVER E-PAYMENT" # Discover card payment — tracked via Discover CSV
+      - "WELLS FARGO CARD"   # Wells Fargo card payment — tracked via WF CSV
+      - "CHASE CREDIT CRD"   # Chase credit card autopay — tracked via Chase credit CSV
+
+  - file: "chase_prime_*.csv"
+    bank: chase
+    account: Chase Prime
+    override_merchant: Amazon   # All transactions from this card are Amazon purchases
+
+  - file: "citi_*.CSV"
+    bank: citi
+    account: Citi
