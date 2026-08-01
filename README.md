@@ -9,6 +9,27 @@ Sankey, spending heatmaps, anomaly alerts, and prior-year trend comparisons.
 > engineering work (cleanup + architecture / mobile-readiness) lives in `TECH-DEBT.md`.
 > New here? Start with `CLAUDE.md` for a codebase orientation.
 
+## Screenshots
+
+Rendered in the "Hi-Bit" design system (warm cream, ink outlines, hard offset shadows, one
+periwinkle accent). Shown here running against built-in mock data (`NEXT_PUBLIC_USE_MOCK_DATA=true`).
+
+**Year in review** - annual income, expenses, invested and savings-rate KPIs over a monthly overview chart:
+
+![Yearly dashboard](docs/screenshots/year-overview.jpg)
+
+**Monthly breakdown** - per-month KPIs with an anomaly "heads up" banner flagging spending above your rolling average:
+
+![Monthly dashboard](docs/screenshots/month-overview.jpg)
+
+**Expenses by category & top merchants** - category donut with per-category benchmarks alongside your biggest merchants:
+
+![Category breakdown and top merchants](docs/screenshots/category-merchants.jpg)
+
+**In-app importer** - drag-and-drop bank CSVs; the app detects the bank, previews what's new, then uploads on confirmation:
+
+![CSV import](docs/screenshots/import.jpg)
+
 ## Repository layout
 
 ```
